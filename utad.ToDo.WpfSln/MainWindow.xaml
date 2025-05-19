@@ -1,0 +1,93 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:utad.ToDo.WpfSln"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:schedule="http://schemas.syncfusion.com/wpf"
+        xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        xmlns:Kanban="clr-namespace:Syncfusion.UI.Xaml.Kanban;assembly=Syncfusion.SfKanban.WPF" x:Class="utad.ToDo.WpfSln.MainWindow"
+        syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManager ThemeName=MaterialDark}"
+        mc:Ignorable="d"
+    
+        Title="ToDo" Height="1080" Width="1920"
+        WindowStyle="SingleBorderWindow"
+        WindowState="Maximized" Closing="MainWindow_Closing">
+
+    <Window.DataContext>
+        <local:ScheduleViewModel/>
+    </Window.DataContext>
+    <Grid Loaded="MainWindow_LOADED">
+        <Grid.Resources>
+            <ImageBrush x:Key="AddButtonImageBrush" ImageSource="utilizadorDefaultIcon.png" Stretch="UniformToFill"/>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="100"/>
+            <!--<RowDefinition Height="500"/>-->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="375"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <schedule:SfScheduler x:Name="MainSfScheduler" VerticalContentAlignment="Center" Grid.Row="1"
+                                Grid.RowSpan="2" Grid.Column="1" 
+                                HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" ViewType="Month" 
+                                FirstDayOfWeek="Sunday" ShowBusyIndicator="True" AllowedViewTypes="Month,Week,Day"
+                                ItemsSource="{Binding Events}" EnableReminder="True"  AppointmentEditFlag="Add,Edit,Resize" HeaderDateFormat="dd-MMMM-yyyy"
+                                AppointmentEditorClosing="Schedule_AppointmentEditorClosing" CellDoubleTapped="LoadTask" CellTapped="LoadTask">
+            <schedule:SfScheduler.AppointmentMapping>
+                <schedule:AppointmentMapping
+                    Subject="EventName"
+                    StartTime="From"
+                    EndTime="To"
+                    AppointmentBackground="Color"
+                    IsAllDay="IsAllDay"
+                    StartTimeZone="StartTimeZone"
+                    EndTimeZone="EndTimeZone"
+                    RecurrenceExceptionDates="RecurrenceExceptions"
+                    RecurrenceRule="RecurrenceRule"
+                    RecurrenceId="RecurrenceId"
+                    Reminders="Reminders">
+                    <schedule:AppointmentMapping.ReminderMapping>
+                        <schedule:ReminderMapping IsDismissed="Dismissed"
+                                                    ReminderTimeInterval="TimeInterval"/>
+                    </schedule:AppointmentMapping.ReminderMapping>
+                </schedule:AppointmentMapping>
+            </schedule:SfScheduler.AppointmentMapping>
+        </schedule:SfScheduler>
+
+        <TextBlock x:Name="txtUtilizador" HorizontalAlignment="Left" Margin="133,245,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Utilizador1" VerticalAlignment="Top" Height="34" Width="102" IsEnabled="False" Opacity="0.5" FontFamily="Arial" FontSize="16" TextAlignment="Center" Foreground="White" RenderTransformOrigin="1.284,1.001"/>
+
+        <Image x:Name="imgFotografia2" HorizontalAlignment="Center" Height="155" Grid.Row="2" Width="192" Source="Images\utilizadorDefaultIcon.png" VerticalAlignment="Top" Margin="0,50,0,0"/>
+
+        <TextBlock x:Name="txtEmail" HorizontalAlignment="Center" Margin="0,305,0,0" Grid.Row="2" TextWrapping="Wrap" Text="exemplo@email.pt" VerticalAlignment="Top" Height="34" Width="152" IsEnabled="False" Opacity="0.5" FontFamily="Arial" FontSize="16" TextAlignment="Center" Foreground="White"/>
+
+        <ListView x:Name="ListViewApp" Grid.Row="2" Margin="0,396,0,0" FontSize="14" Foreground="#DDFFFFFF" FontFamily="Segoi UI" Background="#FF424242">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="false"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Image HorizontalAlignment="Left" Height="128" VerticalAlignment="Center" Width="133" Source="/TTD_CHFR.png" Grid.Row="1"/>
+        <Label x:Name="labelAppointments" Content="Label" HorizontalAlignment="Left" Margin="0,363,0,0" Grid.Row="2" VerticalAlignment="Top" Width="152" FontSize="15" >
+        </Label>
+        <Button Content="" HorizontalAlignment="Left" Margin="1560,9,0,0" VerticalAlignment="Top" Height="45" Width="45" Click="Button_Click" Grid.Column="1" Grid.RowSpan="2">
+            <Button.Background>
+                <ImageBrush ImageSource="/Close.png"/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="btnMudar_Perfil" Content="" HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Top" Height="80" Width="80" Click="btnMudar_Perfil_Click" Grid.Row="2">
+            <Button.Background>
+                <ImageBrush ImageSource="/logoPerfil.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

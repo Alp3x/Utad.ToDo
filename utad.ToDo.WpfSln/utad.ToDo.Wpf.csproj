@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>TTD_CHFR_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Images\**" />
+    <EmbeddedResource Remove="Views\Images\**" />
+    <None Remove="Views\Images\**" />
+    <Page Remove="Views\Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="25.2.4" />
+    <None Remove="Close.png" />
+    <None Remove="Images\TTD_CHFR.png" />
+    <None Remove="Images\utilizadorDefaultIcon.png" />
+    <None Remove="logoPerfil.png" />
+    <None Remove="minimize.png" />
+    <None Remove="png-transparent-computer-icons-symbol-user-profile-logo-symbol-miscellaneous-white-service.png" />
+    <None Remove="TTD_CHFR.png" />
+    <None Remove="utilizadorDefaultIcon.png" />
+    <None Remove="Views\TTD_CHFR.png" />
+    <None Remove="Views\voltarIcon.png" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="syncfusion.ui.wpf.net" Version="25.1.35" />
+    <Content Include="TTD_CHFR_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\TTD_CHFR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\utilizadorDefaultIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="syncfusion.ui.wpf.net" Version="25.1.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Close.png" />
+    <Resource Include="logoPerfil.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="minimize.png" />
+    <Resource Include="png-transparent-computer-icons-symbol-user-profile-logo-symbol-miscellaneous-white-service.png" />
+    <Resource Include="TTD_CHFR.png" />
+    <Resource Include="utilizadorDefaultIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\TTD_CHFR.png" />
+    <Resource Include="Views\voltarIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\foto2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\logoPerfil.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\minimize.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\noPhoto.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
